@@ -46,9 +46,27 @@ type Digest struct {
 	tmp    [BlockSize]byte
 }
 
-func New(cipher func([]byte) cipher.Block) *Digest {
+type copyCipher struct{}
+
+func (c *copyCipher) BlockSize() int {
+	return 32
+}
+
+func (c *copyCipher) Encrypt(dst, src []byte) {
+	copy(dst, src)
+}
+
+func (c *copyCipher) Decrypt(dst, src []byte) {
+	copy(dst, src)
+}
+
+func NewTestCipher(_ []byte) cipher.Block {
+	return &copyCipher{}
+}
+
+func New() *Digest {
 	h := &Digest{
-		cipher: cipher,
+		cipher: NewTestCipher,
 	}
 	h.Reset()
 

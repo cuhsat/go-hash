@@ -1,5 +1,4 @@
-// Package skein implements the Skein-512 hash function, MAC, and stream cipher
-// as defined in "The Skein Hash Function Family, v1.3".
+// Package skein implements the Skein-512 hash function as defined in "The Skein Hash Function Family, v1.3".
 package skein
 
 import (
