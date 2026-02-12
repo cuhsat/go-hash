@@ -22,14 +22,6 @@ type Args struct {
 	NoMsg bool
 }
 
-const (
-	// hash size
-	Size224 = 28
-	Size256 = 32
-	Size384 = 48
-	Size512 = 64
-)
-
 // BlockSize is the block size of Skein-512 in bytes.
 const BlockSize = 64
 
@@ -146,7 +138,7 @@ func (h *Hash) update(b []byte) {
 // It never returns an error.
 func (h *Hash) Write(b []byte) (n int, err error) {
 	if h.noMsg {
-		return 0, errors.New("Skein: can't write to a function configured with NoMsg")
+		return 0, errors.New("skein: can't write to a function configured with NoMsg")
 	}
 	h.update(b)
 	return len(b), nil

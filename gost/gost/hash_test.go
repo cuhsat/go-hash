@@ -14,7 +14,7 @@ func TestHashInterface(t *testing.T) {
 
 func TestVectors(t *testing.T) {
 	h := New(NewTestCipher)
-	h.Write([]byte("a"))
+	_, _ = h.Write([]byte("a"))
 	hashed := h.Sum(nil)
 
 	if len(hashed) == 0 {
@@ -22,7 +22,7 @@ func TestVectors(t *testing.T) {
 	}
 }
 
-func NewTestCipher(key []byte) cipher.Block {
+func NewTestCipher(_ []byte) cipher.Block {
 	return &testCipher{}
 }
 
@@ -45,7 +45,7 @@ func Test_Check(t *testing.T) {
 	check := "08246810594b02216e6f6e633d2d39733c666352565b5b6a344e580c0b4e580c"
 
 	h := New(NewTestCipher)
-	h.Write(in)
+	_, _ = h.Write(in)
 
 	out := h.Sum(nil)
 

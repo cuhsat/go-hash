@@ -37,7 +37,7 @@ var (
 	big256 = big.NewInt(0).SetBit(big.NewInt(0), 256, 1)
 )
 
-type digest struct {
+type Digest struct {
 	cipher func([]byte) cipher.Block
 	size   uint64
 	hsh    [BlockSize]byte
@@ -46,8 +46,8 @@ type digest struct {
 	tmp    [BlockSize]byte
 }
 
-func New(cipher func([]byte) cipher.Block) *digest {
-	h := &digest{
+func New(cipher func([]byte) cipher.Block) *Digest {
+	h := &Digest{
 		cipher: cipher,
 	}
 	h.Reset()
@@ -55,15 +55,15 @@ func New(cipher func([]byte) cipher.Block) *digest {
 	return h
 }
 
-func (h *digest) Size() int {
+func (h *Digest) Size() int {
 	return Size
 }
 
-func (h *digest) BlockSize() int {
+func (h *Digest) BlockSize() int {
 	return BlockSize
 }
 
-func (h *digest) Reset() {
+func (h *Digest) Reset() {
 	h.size = 0
 	h.hsh = [BlockSize]byte{
 		0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -75,7 +75,7 @@ func (h *digest) Reset() {
 	h.buf = h.buf[:0]
 }
 
-func (h *digest) Write(data []byte) (int, error) {
+func (h *Digest) Write(data []byte) (int, error) {
 	h.buf = append(h.buf, data...)
 
 	for len(h.buf) >= BlockSize {
@@ -89,14 +89,14 @@ func (h *digest) Write(data []byte) (int, error) {
 	return len(data), nil
 }
 
-func (h *digest) Sum(in []byte) []byte {
+func (h *Digest) Sum(in []byte) []byte {
 	// Make a copy of d so that caller can keep writing and summing.
 	d0 := *h
 	hash := d0.checkSum()
 	return append(in, hash[:]...)
 }
 
-func (h *digest) checkSum() [Size]byte {
+func (h *Digest) checkSum() [Size]byte {
 	size := h.size
 	chk := h.chk
 	hsh := h.hsh
@@ -168,14 +168,14 @@ func blockXor(dst, a, b *[BlockSize]byte) {
 	}
 }
 
-func (h *digest) step(hin, m [BlockSize]byte) [BlockSize]byte {
+func (h *Digest) step(hin, m [BlockSize]byte) [BlockSize]byte {
 	out := new([BlockSize]byte)
 	u := new([BlockSize]byte)
 	v := new([BlockSize]byte)
 	k := new([BlockSize]byte)
 
-	(*u) = hin
-	(*v) = m
+	*u = hin
+	*v = m
 
 	blockXor(k, u, v)
 	k = fP(k)
@@ -273,7 +273,7 @@ func (h *digest) step(hin, m [BlockSize]byte) [BlockSize]byte {
 	return *out
 }
 
-func (h *digest) chkAdd(data []byte) *big.Int {
+func (h *Digest) chkAdd(data []byte) *big.Int {
 	i := big.NewInt(0).SetBytes(data)
 	i.Add(i, h.chk)
 	if i.Cmp(big256) != -1 {

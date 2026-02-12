@@ -472,7 +472,7 @@ func Test_Hash512_Check(t *testing.T) {
 func TestNew(t *testing.T) {
 	for i, v := range testVectors {
 		h := New(v.outLen, v.args)
-		h.Write(v.input)
+		_, _ = h.Write(v.input)
 		sum := fmt.Sprintf("%x", h.Sum(nil))
 		if sum != v.hexResult {
 			t.Errorf("%d: expected %s, got %s", i, v.hexResult, sum)
@@ -496,12 +496,12 @@ func TestCopyIo(t *testing.T) {
 
 func TestOutputReader(t *testing.T) {
 	h := New(125, nil)
-	h.Write([]byte("testing output reader"))
+	_, _ = h.Write([]byte("testing output reader"))
 	sum1 := h.Sum(nil)
 	sum2 := make([]byte, len(sum1))
 	r := h.OutputReader()
-	r.Read(nil) // read no bytes
-	r.Read(sum2)
+	_, _ = r.Read(nil) // read no bytes
+	_, _ = r.Read(sum2)
 	if !bytes.Equal(sum1, sum2) {
 		t.Errorf("expected %x, got %x", sum1, sum2)
 	}

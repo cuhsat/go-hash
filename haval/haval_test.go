@@ -48,7 +48,7 @@ func Test_Hash128_3_Check(t *testing.T) {
 		},
 	}
 
-	h := New128_3()
+	h := New1283()
 
 	for i, test := range tests {
 		h.Reset()
@@ -89,7 +89,7 @@ func Test_Hash160_3_Check(t *testing.T) {
 		},
 	}
 
-	h := New160_3()
+	h := New1603()
 
 	for i, test := range tests {
 		h.Reset()
@@ -130,7 +130,7 @@ func Test_Hash192_3_Check(t *testing.T) {
 		},
 	}
 
-	h := New192_3()
+	h := New1923()
 
 	for i, test := range tests {
 		h.Reset()
@@ -171,7 +171,7 @@ func Test_Hash224_3_Check(t *testing.T) {
 		},
 	}
 
-	h := New224_3()
+	h := New2243()
 
 	for i, test := range tests {
 		h.Reset()
@@ -212,7 +212,7 @@ func Test_Hash256_3_Check(t *testing.T) {
 		},
 	}
 
-	h := New256_3()
+	h := New2563()
 
 	for i, test := range tests {
 		h.Reset()
@@ -255,7 +255,7 @@ func Test_Hash128_4_Check(t *testing.T) {
 		},
 	}
 
-	h := New128_4()
+	h := New1284()
 
 	for i, test := range tests {
 		h.Reset()
@@ -296,7 +296,7 @@ func Test_Hash160_4_Check(t *testing.T) {
 		},
 	}
 
-	h := New160_4()
+	h := New1604()
 
 	for i, test := range tests {
 		h.Reset()
@@ -337,7 +337,7 @@ func Test_Hash192_4_Check(t *testing.T) {
 		},
 	}
 
-	h := New192_4()
+	h := New1924()
 
 	for i, test := range tests {
 		h.Reset()
@@ -378,7 +378,7 @@ func Test_Hash224_4_Check(t *testing.T) {
 		},
 	}
 
-	h := New224_4()
+	h := New2244()
 
 	for i, test := range tests {
 		h.Reset()
@@ -419,7 +419,7 @@ func Test_Hash256_4_Check(t *testing.T) {
 		},
 	}
 
-	h := New256_4()
+	h := New2564()
 
 	for i, test := range tests {
 		h.Reset()
@@ -462,7 +462,7 @@ func Test_Hash128_5_Check(t *testing.T) {
 		},
 	}
 
-	h := New128_5()
+	h := New1285()
 
 	for i, test := range tests {
 		h.Reset()
@@ -503,7 +503,7 @@ func Test_Hash160_5_Check(t *testing.T) {
 		},
 	}
 
-	h := New160_5()
+	h := New1605()
 
 	for i, test := range tests {
 		h.Reset()
@@ -544,7 +544,7 @@ func Test_Hash192_5_Check(t *testing.T) {
 		},
 	}
 
-	h := New192_5()
+	h := New1925()
 
 	for i, test := range tests {
 		h.Reset()
@@ -585,7 +585,7 @@ func Test_Hash224_5_Check(t *testing.T) {
 		},
 	}
 
-	h := New224_5()
+	h := New2245()
 
 	for i, test := range tests {
 		h.Reset()
@@ -626,7 +626,7 @@ func Test_Hash256_5_Check(t *testing.T) {
 		},
 	}
 
-	h := New256_5()
+	h := New2565()
 
 	for i, test := range tests {
 		h.Reset()
