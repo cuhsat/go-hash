@@ -1,3 +1,3 @@
-module github.com/cuhsat/go-hash
+module github.com/f0x4n6/go-hash
 
-go 1.25
+go 1.26
