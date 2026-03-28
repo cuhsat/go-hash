@@ -1,3 +1,3 @@
-module github.com/f0x4n6/go-hash
+module go.foxforensics.dev/go-hash
 
 go 1.26
